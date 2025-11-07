@@ -1,3 +1,6 @@
 [submodule "tau2"]
 	path = tau2
 	url = https://github.com/sierra-research/tau2-bench
+[submodule "terminal"]
+	path = terminal
+	url = https://github.com/laude-institute/terminal-bench

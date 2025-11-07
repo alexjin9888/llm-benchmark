@@ -5,5 +5,5 @@ tau2 run \
   --agent-llm xai/grok-4-fast-reasoning \
   --user-llm xai/grok-4-fast-reasoning \
   --num-trials 1 \
-  --num-tasks 5 \
+  --num-tasks 1 \
   --max-concurrency 1
