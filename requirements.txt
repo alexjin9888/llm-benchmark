@@ -1,0 +1,6 @@
+requests
+httpx
+pydantic
+tqdm
+python-dotenv
+tabulate
