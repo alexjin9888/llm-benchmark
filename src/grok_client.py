@@ -15,16 +15,17 @@ class GrokClient:
     def chat(self, model: str, messages: List[Dict[str, str]],
              temperature: float = 0.0, seed: Optional[int] = None,
              extra: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        payload_for_cache = {
-            "model": model,
-            "messages": messages,
-            "temperature": temperature,
-            "seed": seed,
-        }
-        key = cache_key(payload_for_cache)
-        cached = get_from_cache(key)
-        if cached:
-            return cached
+        if not (extra and extra.get("no_cache")):
+            payload_for_cache = {
+                "model": model,
+                "messages": messages,
+                "temperature": temperature,
+                "seed": seed,
+            }
+            key = cache_key(payload_for_cache)
+            cached = get_from_cache(key)
+            if cached:
+                return cached
 
         out = send_chat(model=model, messages=messages, temperature=temperature)
         record = {
