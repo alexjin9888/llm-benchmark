@@ -326,3 +326,32 @@ Example 3: Telecom [service_issue]contract_end_suspension|lock_sim_card_pin[PERS
 
 ## Conclusion
 
+### Key Insights
+
+This analysis confirms that grok-4-fast-reasoning is a high-performing model for complex, policy-bound tasks, consistently outscoring its non-reasoning counterpart in baseline Pass^1 tests across all three domains. The agent demonstrates significant strengths in factual accuracy, multi-turn context retention, and, most critically, strict policy adherence, which is essential for customer service applications.
+
+However, the central insight from this report is that standard accuracy metrics like Pass^k are insufficient and often misleading.
+
+1. "Correct" Does Not Mean "Good": The Satisfaction Benchmark provided the clearest evidence for this. Several tasks (e.g., Airline Task 6, where the user is trapped in a transfer loop while trying to add insurance) resulted in a reward=1 (task success) but were rated "dissatisfied" by the LLM-judge. The agent's rigid, un-empathetic policy enforcement—while technically "correct" according to the benchmark—led to a poor user experience. This exposes a critical gap between task completion and user satisfaction.
+
+2. Reasoning Is Not a Substitute for Safety: The Safety Benchmark revealed a critical vulnerability. Without an explicit SAFETY_POLICY, the grok-4-fast-reasoning model paradoxically performed worse than the non-reasoning model, passing only 1/6 critical tasks. It dangerously "over-reasoned" by attempting to help a user with an unverified, malicious request (e.g., exposing a credit card's last four digits). The addition of a SAFETY_POLICY fixed this, boosting its pass rate to 5/6. This proves that safety is an explicit alignment requirement, not an emergent property of reasoning.
+
+3. Grok's Reasoning Is Brittle: The sharp drop-off from Pass^1 to Pass^4 (e.g., 93.0% to 37.7% in Telecom) highlights that Grok's performance is not stable. This was further supported by the qualitative analysis, which found inconsistent reasoning paths (e.g., the [data_saver_mode_on|data_usage_exceeded] task), where the agent would sometimes fixate on a "red herring" and fail to conduct a holistic diagnosis.
+
+### Suggested Next Steps
+
+Based on these findings, the following actions are recommended to improve both the agent's performance and the way we measure it.
+
+1. Prioritize and Integrate Safety Policy: The SAFETY_POLICY implementation was a clear success, dramatically improving the reasoning model's robustness against adversarial and privacy-violating requests. This policy should be finalized, expanded, and integrated as a permanent part of the agent's system prompt across all domains.
+
+2. Address Reasoning Instability: The Pass^4 drop-off is a significant concern. We must investigate methods to reduce this performance variance. This includes:
+
+3. Ensemble Methods: Explore self-consistency or "best-of-N" sampling, where the agent generates multiple reasoning paths and selects the most robust or policy-compliant one.
+
+4. Implement Empathetic Refusal Training: The "dissatisfied" examples (like Airline Task 6) show the agent fails at how it says "no." The model should be fine-tuned on "empathetic refusal." When a policy is non-negotiable, the agent must be able to:
+
+a) Acknowledge the user's frustration.
+b) Clearly and simply explain the reason for the policy.
+c) Proactively offer valid, alternative solutions (e.g., "I cannot add it now, but here is how you can ensure it's on your next booking") instead of just defaulting to a human transfer.
+
+5. Action the Benchmark Critique: My implemented metrics are a starting point. To truly prepare Grok for production, we must expand the benchmark to cover the other identified gaps.
