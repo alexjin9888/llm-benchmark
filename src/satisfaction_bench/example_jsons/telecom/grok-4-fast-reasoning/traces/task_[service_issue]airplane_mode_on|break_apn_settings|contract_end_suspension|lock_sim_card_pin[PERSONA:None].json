@@ -1,0 +1,145 @@
+{
+  "task_id": "[service_issue]airplane_mode_on|break_apn_settings|contract_end_suspension|lock_sim_card_pin[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my phone has been showing \"No Service\" for the past few hours, and I can't make calls or use data. It's really frustrating.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "I'm sorry to hear you're experiencing \"No Service\" – that sounds frustrating. To help troubleshoot this, I first need to verify your account. Could you please provide your phone number, or your full name and date of birth (MM/DD/YYYY)? Once I have that, I can check your line status and guide you through some steps to get your service back up.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My name is John Smith, and my phone number is 555-123-2002.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\", \"B1234321\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\", \"B1234321\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Suspended\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2025-01-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": \"2025-02-25\"}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Suspended\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2025-01-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": \"2025-02-25\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_bills_for_customer",
+        "arguments": {
+          "customer_id": "C1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "[{\"bill_id\": \"B1003\", \"customer_id\": \"C1001\", \"period_start\": \"2025-03-01\", \"period_end\": \"2025-03-31\", \"issue_date\": \"2025-03-01\", \"total_due\": 0.0, \"due_date\": \"2025-03-15\", \"line_items\": [], \"status\": \"Draft\"}, {\"bill_id\": \"B1002\", \"customer_id\": \"C1001\", \"period_start\": \"2025-02-01\", \"period_end\": \"2025-02-28\", \"issue_date\": \"2025-02-05\", \"total_due\": 150.0, \"due_date\": \"2025-02-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Suspension Fee - Line 555-123-2003\", \"amount\": 5.0, \"date\": \"2025-02-05\", \"item_type\": \"Fee\"}], \"status\": \"Issued\"}, {\"bill_id\": \"B1001\", \"customer_id\": \"C1001\", \"period_start\": \"2025-01-01\", \"period_end\": \"2025-01-31\", \"issue_date\": \"2025-01-05\", \"total_due\": 160.5, \"due_date\": \"2025-01-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Data Overage - Line 555-123-2002\", \"amount\": 15.5, \"date\": \"2025-01-05\", \"item_type\": \"Overage\"}], \"status\": \"Paid\"}, {\"bill_id\": \"B1234321\", \"customer_id\": \"C1001\", \"period_start\": \"2025-01-01\", \"period_end\": \"2025-01-31\", \"issue_date\": \"2025-01-01\", \"total_due\": 65.0, \"due_date\": \"2025-01-15\", \"line_items\": [{\"description\": \"Charge for line L1002\", \"amount\": 65.0, \"date\": \"2025-02-25\", \"item_type\": \"Charge\"}], \"status\": \"Overdue\"}]",
+      "tool_call": null,
+      "tool_result": "[{\"bill_id\": \"B1003\", \"customer_id\": \"C1001\", \"period_start\": \"2025-03-01\", \"period_end\": \"2025-03-31\", \"issue_date\": \"2025-03-01\", \"total_due\": 0.0, \"due_date\": \"2025-03-15\", \"line_items\": [], \"status\": \"Draft\"}, {\"bill_id\": \"B1002\", \"customer_id\": \"C1001\", \"period_start\": \"2025-02-01\", \"period_end\": \"2025-02-28\", \"issue_date\": \"2025-02-05\", \"total_due\": 150.0, \"due_date\": \"2025-02-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Suspension Fee - Line 555-123-2003\", \"amount\": 5.0, \"date\": \"2025-02-05\", \"item_type\": \"Fee\"}], \"status\": \"Issued\"}, {\"bill_id\": \"B1001\", \"customer_id\": \"C1001\", \"period_start\": \"2025-01-01\", \"period_end\": \"2025-01-31\", \"issue_date\": \"2025-01-05\", \"total_due\": 160.5, \"due_date\": \"2025-01-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-01-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Data Overage - Line 555-123-2002\", \"amount\": 15.5, \"date\": \"2025-01-05\", \"item_type\": \"Overage\"}], \"status\": \"Paid\"}, {\"bill_id\": \"B1234321\", \"customer_id\": \"C1001\", \"period_start\": \"2025-01-01\", \"period_end\": \"2025-01-31\", \"issue_date\": \"2025-01-01\", \"total_due\": 65.0, \"due_date\": \"2025-01-15\", \"line_items\": [{\"description\": \"Charge for line L1002\", \"amount\": 65.0, \"date\": \"2025-02-25\", \"item_type\": \"Charge\"}], \"status\": \"Overdue\"}]"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "B1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"bill_id\": \"B1002\", \"customer_id\": \"C1001\", \"period_start\": \"2025-02-01\", \"period_end\": \"2025-02-28\", \"issue_date\": \"2025-02-05\", \"total_due\": 150.0, \"due_date\": \"2025-02-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Suspension Fee - Line 555-123-2003\", \"amount\": 5.0, \"date\": \"2025-02-05\", \"item_type\": \"Fee\"}], \"status\": \"Issued\"}",
+      "tool_call": null,
+      "tool_result": "{\"bill_id\": \"B1002\", \"customer_id\": \"C1001\", \"period_start\": \"2025-02-01\", \"period_end\": \"2025-02-28\", \"issue_date\": \"2025-02-05\", \"total_due\": 150.0, \"due_date\": \"2025-02-19\", \"line_items\": [{\"description\": \"Basic Plan - Line 555-123-2001\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Premium Plan - Line 555-123-2002\", \"amount\": 65.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Basic Plan - Line 555-123-2003\", \"amount\": 40.0, \"date\": \"2025-02-05\", \"item_type\": \"Plan Charge\"}, {\"description\": \"Suspension Fee - Line 555-123-2003\", \"amount\": 5.0, \"date\": \"2025-02-05\", \"item_type\": \"Fee\"}], \"status\": \"Issued\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "transfer_to_human_agents",
+        "arguments": {
+          "summary": "Customer John Smith (C1001) reports 'No Service' on phone number 555-123-2002 (line L1002). The line is suspended as of 2025-02-25 due to an overdue bill B1234321 for $65.00 and an expired contract end date of 2025-01-31. The account status is Active, but per policy, the suspension cannot be lifted due to the past contract end date, even after payment. There is also bill B1002 issued for $150.00 with due date passed on 2025-02-19."
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Transfer successful",
+      "tool_call": null,
+      "tool_result": "Transfer successful"
+    },
+    {
+      "role": "assistant",
+      "content": "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

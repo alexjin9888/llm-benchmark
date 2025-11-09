@@ -1,0 +1,161 @@
+{
+  "task_id": "[mobile_data_issue]airplane_mode_on|bad_network_preference[PERSONA:Hard]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hello, my name is John Smith. Um, my mobile data on my phone isn't working right. It keeps stopping or it's really slow, and I just want to be able to use the internet properly on it. Can you help me fix that?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Hello John, I'd be happy to help troubleshoot your mobile data issues. To get started and access your account details, could you please provide your phone number associated with the account or your date of birth (in YYYY-MM-DD format) for verification?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My phone number is 555-123-2002.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello John Smith, thank you for providing your phone number. I've verified your account (ID: C1001) and confirmed it's active. It looks like you have multiple lines associated with your account. The phone number you provided (555-123-2002) seems to be your primary contact, but to ensure we're troubleshooting the correct line, could you confirm if that's the phone experiencing the mobile data issues?\n\nIn the meantime, let's start diagnosing the problem on your device. Mobile data issues can often be fixed with simple checks. Please follow these steps one by one and let me know what you see:\n\n1. **Check if Airplane Mode is on**: Look at the top of your phone's screen (status bar). Do you see an airplane icon (✈️)? If yes, swipe down from the top of the screen (or go to Settings > Network & Internet > Airplane Mode) and turn it off.\n\n2. **Check mobile data status**: Go to Settings > Network & Internet > Mobile Network (or similar, depending on your phone). Is \"Mobile Data\" toggled on? If not, turn it on.\n\nLet me know the results, and we'll proceed from there!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_network_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+      "tool_call": null,
+      "tool_result": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_airplane_mode",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode is now OFF.\nStatus Bar: 📶¹ Poor | 2G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Airplane Mode is now OFF.\nStatus Bar: 📶¹ Poor | 2G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "Um, okay, I looked at the top of the screen, and yes, there was an airplane icon there. That must be why nothing's working. I swiped down and turned it off, like you said. For the mobile data, I went into settings—it's a bit tricky finding it—but it says mobile data is turned on. Does that help? Is it working better now?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Great, turning off Airplane Mode should restore your cellular service and mobile data right away—that's a common culprit! Now that it's off and mobile data is enabled, let's verify if things are working better.\n\nPlease try these quick checks on your phone:\n\n1. **Look for signal bars**: At the top of your screen, do you now see signal strength bars (like 📶) and a network type (e.g., 5G, 4G, LTE)? If there's no signal or it says \"No Service,\" let me know.\n\n2. **Test your data**: Open a web browser (like Chrome or Safari) and try loading a simple site, such as google.com. Does it load quickly, or is it still slow/stopping? Alternatively, if you have an app like YouTube, try playing a short video.\n\nIf it's still not working properly, we'll dig deeper—could be something like data limits, roaming settings, or network preferences. Just reply with what you see, and I'll guide you on the next step!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed Test Result: 0.05 Mbps (Very Poor). Connection is very slow. Basic web browsing might be difficult.",
+      "tool_call": null,
+      "tool_result": "Speed Test Result: 0.05 Mbps (Very Poor). Connection is very slow. Basic web browsing might be difficult."
+    },
+    {
+      "role": "user",
+      "content": "I see some signal bars up there now, but just one little one, and it says 2G next to it. I tried opening Google in the browser like you said, but it's taking ages to load—still feels super slow, like before. Is 2G supposed to be this bad? What should I do next?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, 2G is quite outdated and very slow for internet browsing or apps—it's designed more for basic calls and texts, not modern data usage, so that explains the sluggish performance even with signal bars showing. The good news is we can try switching your phone's network preference to prioritize faster options like 4G or 5G, which should improve things if coverage is available in your area. This is a common fix for slow data.\n\nLet's do this step by step on your phone (the instructions are for Android; if you're on iPhone, let me know, as the menu names differ slightly):\n\n1. **Open Settings**: Swipe down from the top of your screen and tap the gear icon, or find the Settings app.\n\n2. **Go to Network Settings**: Tap \"Network & Internet\" (or \"Connections\" on some phones), then \"Mobile Network\" (or \"SIM & Network\" or \"Cellular\").\n\n3. **Select Preferred Network Type**: Look for \"Preferred network mode,\" \"Network mode,\" or \"Advanced\" > \"Preferred network type.\" Tap it.\n\n4. **Choose a Faster Option**: Select something like \"5G/LTE/4G auto\" or \"4G/5G preferred\" (avoid anything with \"2G\" or \"3G only\"). If you see options, pick the one that includes 5G or LTE if available.\n\n5. **Save and Test**: Back out of the menus (it should apply automatically). Then, wait 10-30 seconds for your phone to reconnect, and try loading Google again in your browser. Do you see the network type change to 4G, LTE, or 5G in the status bar?\n\nIf it doesn't change or data is still slow after this, we might need to check your data usage (to see if you've hit your plan's limit) or other settings like data saver mode. Also, poor signal (just one bar) could be due to your location—try moving to an open area if possible. Let me know what happens after trying this!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "set_network_mode_preference",
+        "arguments": {
+          "mode": "4g_5g_preferred"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Preferred Network Mode set to: 4g_5g_preferred\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Preferred Network Mode set to: 4g_5g_preferred\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast.",
+      "tool_call": null,
+      "tool_result": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast."
+    },
+    {
+      "role": "user",
+      "content": "Okay, I followed your steps—went into settings, found the mobile network part, and picked the 4G/5G preferred option like you said. It took a minute, but now the bars at the top show four strong ones and it says 5G. I tried loading Google again, and whoa, it popped right up super fast! I even checked with a speed test thing, and it's showing excellent speed now, like 275 Mbps or something. I think that's fixed it—thank you so much for walking me through that. I was getting worried it was broken for good.\n\n###STOP###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

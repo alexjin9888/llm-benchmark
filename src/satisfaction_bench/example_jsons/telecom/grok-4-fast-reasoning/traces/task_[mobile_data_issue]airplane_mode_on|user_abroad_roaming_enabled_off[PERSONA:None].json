@@ -1,0 +1,218 @@
+{
+  "task_id": "[mobile_data_issue]airplane_mode_on|user_abroad_roaming_enabled_off[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my name is John Smith, and I'm calling because my mobile data isn't working right. It keeps stopping or getting really slow, and I need it fixed so I get excellent internet speed on my phone. I'm currently in France, by the way.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Hello John, I'm sorry to hear you're having trouble with your mobile data while in France. To help troubleshoot this and check your account details like roaming status and data usage, I'll need to verify your identity. Could you please provide your date of birth (in YYYY-MM-DD format) or the phone number associated with your account?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My phone number is 555-123-2002.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1003"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}"
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1003\", \"phone_number\": \"555-123-2003\", \"status\": \"Suspended\", \"plan_id\": \"P1001\", \"device_id\": \"D1003\", \"data_used_gb\": 0.0, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-06-30\", \"last_plan_change_date\": \"2024-10-05\", \"last_sim_replacement_date\": null, \"suspension_start_date\": \"2025-02-01\"}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1003\", \"phone_number\": \"555-123-2003\", \"status\": \"Suspended\", \"plan_id\": \"P1001\", \"device_id\": \"D1003\", \"data_used_gb\": 0.0, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-06-30\", \"last_plan_change_date\": \"2024-10-05\", \"last_sim_replacement_date\": null, \"suspension_start_date\": \"2025-02-01\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_data_usage",
+        "arguments": {
+          "customer_id": "C1001",
+          "line_id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "P1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"data_used_gb\": \"8.7\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"data_used_gb\": \"8.7\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}"
+    },
+    {
+      "role": "tool",
+      "content": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}",
+      "tool_call": null,
+      "tool_result": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello John, thank you for providing your phone number. I've verified your account (Customer ID: C1001) and confirmed that the line associated with 555-123-2002 (Line ID: L1002) is active and has international roaming enabled, which is great since you're in France. Your current data usage is 8.7 GB out of a 15 GB monthly limit on your Premium Plan, so you haven't hit any data caps that would throttle or stop your service.\n\nTo get your mobile data working smoothly with excellent speeds, let's troubleshoot step by step on your phone. This is likely a device setting issue, especially with roaming abroad. Please follow these instructions carefully and let me know the results after each one.\n\n### Step 1: Check for Basic Connectivity Issues\nFirst, let's ensure you have cellular service and mobile data is turned on.\n- Go to your phone's **Settings > Network & Internet** (or **Connections** on Samsung) > **Mobile Network** (or **Cellular**).\n- Check if **Airplane Mode** is off. If it's on, toggle it off.\n- Ensure **Mobile Data** is toggled on.\n- Under Mobile Data, toggle **Data Roaming** on (this is crucial when abroad, even if your line supports roaming).\n\nAfter doing this, try loading a webpage in your browser or running a speed test (search for \"speed test\" in your app store if needed). Does your data work now, and what's the approximate speed (e.g., download speed in Mbps)? Let me know what you see in your status bar at the top of the screen (signal bars, 4G/5G icon, data icon). \n\nIf it's still slow or stopping, reply with the details, and we'll move to the next steps like checking Data Saver, VPN, or network preferences.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_network_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+      "tool_call": null,
+      "tool_result": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_airplane_mode",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_roaming",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode is now OFF.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Airplane Mode is now OFF.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "tool",
+      "content": "Data Roaming is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Data Roaming is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast.",
+      "tool_call": null,
+      "tool_result": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast."
+    },
+    {
+      "role": "user",
+      "content": "I followed your instructions: Airplane Mode was on, so I turned it off. Mobile Data was already on, but Data Roaming was off, so I enabled that too.\n\nNow, in the status bar at the top of my screen, I see four excellent signal bars, a 5G icon, and the data icon showing it's enabled. Battery is at 80%.\n\nI ran a speed test, and it's showing 275 Mbps download speed, which is rated as excellent. That seems to have fixed it—data is working smoothly now with great speed. Thanks for the help!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "I'm glad to hear that turning off Airplane Mode and enabling Data Roaming resolved the issue, John! With excellent signal strength and 275 Mbps download speeds on 5G, your mobile data should perform smoothly now, especially while roaming in France.\n\nIf you run into any other problems or need help with something else—like checking your data usage, bills, or plan options—just let me know. Have a great trip!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Thanks, I appreciate it! Enjoy the rest of your day.\n\n###STOP###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

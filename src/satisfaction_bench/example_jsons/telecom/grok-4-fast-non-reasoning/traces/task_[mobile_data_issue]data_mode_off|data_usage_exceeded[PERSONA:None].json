@@ -1,0 +1,256 @@
+{
+  "task_id": "[mobile_data_issue]data_mode_off|data_usage_exceeded[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my mobile data isn't working right—it's either cutting out or super slow, and I need it fixed so I get really fast internet on my phone. No Wi-Fi here, just relying on cellular. Can you help with that?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Hi there! I'm sorry to hear your mobile data is cutting out or running slow—that sounds frustrating, especially when you're relying on cellular. I can definitely help troubleshoot this step by step to get you fast internet back. To start, I'll need to verify your account and check your line's status. Could you please provide your phone number (the one with the issue) or your full name and date of birth for verification? Once I have that, we can dive into diagnostics like signal strength, data usage, and settings on your device.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My name is John Smith, and my phone number is 555-123-2002. Let's get this sorted out.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 15.1, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 15.1, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "P1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}",
+      "tool_call": null,
+      "tool_result": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_data_usage",
+        "arguments": {
+          "customer_id": "C1001",
+          "line_id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"data_used_gb\": \"15.1\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"data_used_gb\": \"15.1\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi John, thanks for providing that—I've verified your account (customer ID C1001) and confirmed the line for 555-123-2002 is active on our Premium Plan with a 15GB data limit. Looking at your current billing cycle (ends 2025-02-28), you've used 15.1GB, which exceeds the limit. This is likely why your mobile data is cutting out or extremely slow—once the limit is hit, we throttle speeds to very low levels (like 128kbps) to prevent full cutoff, but it's not suitable for fast internet like browsing or streaming.\n\nTo get you really fast cellular data back quickly, we have two main options: (1) refuel data to add more allowance right away (up to 2GB max, at $2 per GB on your plan), or (2) upgrade to a higher-data plan for the long term. Refueling is the fastest fix and will apply instantly to this line.\n\nHow much data would you like to refuel (e.g., 1GB for $2 or 2GB for $4)? Or would you prefer to explore plan upgrade options first? Let me know, and we'll get it sorted!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Okay, that makes sense—I've used up my data. I'm fine with refueling 2GB to get back to full speed right away, but I don't want to change my plan. Can you go ahead and add that for me?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "refuel_data",
+        "arguments": {
+          "customer_id": "C1001",
+          "line_id": "L1002",
+          "gb_amount": 2
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"message\": \"Successfully added 2 GB of data for line L1002 for $4.00\", \"new_data_refueling_gb\": \"2.0\", \"charge\": \"4.0\"}",
+      "tool_call": null,
+      "tool_result": "{\"message\": \"Successfully added 2 GB of data for line L1002 for $4.00\", \"new_data_refueling_gb\": \"2.0\", \"charge\": \"4.0\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Great news, John—I've successfully refueled 2GB of data to your line (L1002) for $4.00, which has been added to your next bill. This brings your available data to 2GB of high-speed allowance right away, so your cellular internet should now be back to full speed (no more throttling).\n\nTo ensure everything is working smoothly:\n- Turn off Data Saver mode if it's on (this can limit speeds).\n- Restart your phone to refresh the connection.\n- Run a quick speed test on your device to confirm.\n\nIf your data still feels slow after a few minutes or you run into any other issues, let me know the details (like your current signal strength or speed test results), and we'll troubleshoot further. Otherwise, you're all set—enjoy the fast internet!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed test failed: No Connection.",
+      "tool_call": null,
+      "tool_result": "Speed test failed: No Connection."
+    },
+    {
+      "role": "user",
+      "content": "I tried running a speed test like you suggested, but it failed and said there's no connection. The data still isn't working—it's not giving me any internet at all. Can we check what's going on with the signal or something?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Hi John, I'm sorry to hear the speed test failed and you're still without any data connection—that's not right after the refuel. The 2GB addition should have restored full-speed access immediately, but sometimes it takes a minute for the network to update, or there could be a device-side issue like settings or signal problems.\n\nTo diagnose this properly, let's check a few key things on your phone's end. Could you please run these quick checks for me? Just reply with the results, and I'll guide you on the next steps:\n\n1. **Check your status bar**: Look at the top of your screen—what icons do you see for signal strength (e.g., bars or \"No Signal\"), network type (like 5G, 4G), and mobile data (e.g., \"Data Enabled\" or off)?\n\n2. **Check network status**: Is mobile data turned on? Any mention of airplane mode or data roaming?\n\n3. **Run a speed test again**: If possible, try it once more after restarting your phone (hold the power button and select restart).\n\nAlso, are you in an area with good coverage (indoors/outdoors, urban/rural)? Once I have those details, we can pinpoint if it's a signal issue, settings glitch, or something else and fix it fast. Hang tight!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_status_bar",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Status Bar: 📶⁴ Excellent | 5G | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Status Bar: 📶⁴ Excellent | 5G | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "Okay, I checked the status bar on my phone. It shows excellent signal strength with 4 bars, connected to 5G, but mobile data is disabled. Battery's at 80%. That might be why the speed test failed—data's off. Should I turn it back on?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, that's exactly the issue—mobile data being disabled would prevent any internet connection, even with excellent 5G signal and the refueled data allowance. Turning it on should get you back online right away.\n\nPlease go ahead and toggle mobile data ON in your phone's settings (usually under Settings > Network & Internet > Mobile Network > Mobile Data). Once it's enabled, restart your phone for good measure (hold the power button and select restart), then try the speed test again.\n\nLet me know what the speed test shows after that—it should now register as \"excellent\" or \"good\" with your full speeds restored. If it still doesn't work or you run into any snags turning it on, reply with the details!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_data",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Mobile Data is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Mobile Data is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast.",
+      "tool_call": null,
+      "tool_result": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast."
+    },
+    {
+      "role": "user",
+      "content": "Great, I turned mobile data back on, restarted my phone, and ran the speed test again. It's showing 275 Mbps, which is excellent—super fast now! That fixed it, thanks for walking me through that. I'm all set.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Awesome, John—I'm thrilled to hear the speed test came back at 275 Mbps! That's excellent speed on 5G, and it sounds like toggling mobile data and restarting did the trick. You're welcome; happy to help get you sorted.\n\nIf anything else comes up with your service, data, or account, just reach out anytime. Enjoy the fast internet!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Thanks! Yeah, it's working perfectly now. Have a good one. \n\n###STOP###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

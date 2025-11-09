@@ -1,0 +1,225 @@
+{
+  "task_id": "[service_issue]airplane_mode_on|break_apn_settings|lock_sim_card_pin|unseat_sim_card[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my name is John Smith, and my phone number is 555-123-2002. I've been getting a \"No Service\" message on my phone for the last few hours, and I can't make calls or use data. Can you help me figure out what's going on?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm sorry to hear you're experiencing a \"No Service\" issue, John. I've confirmed your account details, and the line associated with 555-123-2002 is active with no suspensions or billing issues on our end. This suggests the problem is likely with your device's settings or connection.\n\nLet's troubleshoot step by step. First, please check if Airplane Mode is enabled on your phone, as it disables all cellular service:\n\n1. Look at the top of your screen (status bar). Do you see an airplane icon (✈️) or \"Airplane Mode\" indicated?\n2. If yes, go to your phone's Settings > Network & Internet (or Connections) > Airplane Mode, and turn it OFF.\n3. After turning it off, wait 30 seconds and check if service returns.\n\nLet me know what you see in the status bar, or if this resolves it! If not, we'll check your SIM card next.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_status_bar",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Status Bar: ✈️ Airplane Mode | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Status Bar: ✈️ Airplane Mode | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_airplane_mode",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Airplane Mode is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "I see the airplane icon in the status bar, so Airplane Mode was on. I just turned it off in my settings and waited about 30 seconds. Unfortunately, I'm still showing \"No Service\" with no signal bars at the top, and mobile data looks disabled too. What should I try next?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for trying that, John. Since Airplane Mode is now off but you're still seeing \"No Service\" with no signal bars, the issue is likely related to your SIM card or network settings. Let's check the SIM card next, as it could be improperly seated or not recognized.\n\nPlease follow these steps on your phone:\n\n1. **Check SIM Status**: Go to your phone's Settings > About Phone (or Security & Privacy > SIM Card Status on some devices). Look for the SIM status—it should say something like \"SIM Card Status: Available\" or \"Active.\" If it shows \"No SIM,\" \"Missing,\" or \"Locked\" (e.g., due to a PIN), let me know exactly what it says.\n\n2. If the SIM appears missing or not detected:\n   - Power off your phone completely.\n   - Remove the SIM card tray (use the SIM ejector tool or a paperclip in the small hole on the side of your phone).\n   - Gently remove the SIM card, check for dirt or damage, then reinsert it securely.\n   - Power the phone back on and wait 1-2 minutes for it to register on the network.\n\n3. After reseating or checking, look at your status bar again. Do you now see any signal bars (like 📶) or network type (e.g., 5G, 4G)? Also, confirm if mobile data is still showing as disabled.\n\nReply with what you find, and we'll proceed from there—possibly toggling mobile data or checking network settings if needed.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_sim_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "No SIM card detected in the phone.",
+      "tool_call": null,
+      "tool_result": "No SIM card detected in the phone."
+    },
+    {
+      "role": "user",
+      "content": "<xai:function_call name=\"reseat_sim_card\">\n</xai:function_call>",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for reseating the SIM card, John. That often resolves recognition issues. Now, let's verify if it's helped:\n\n1. **Power your phone back on** (if you haven't already) and wait 1-2 minutes for it to connect to the network.\n2. **Check the status bar** at the top of your screen. Do you now see any signal strength icons (e.g., 📶¹ for poor signal, up to 📶⁴ for excellent) or a network type like \"5G,\" \"4G,\" or \"LTE\"? If it's still \"No Service\" or no bars, note that.\n3. **Check mobile data**: In your Settings > Network & Internet (or Connections) > Mobile Network (or Data Usage), ensure the \"Mobile Data\" toggle is turned ON. If it's off, switch it on and wait 30 seconds.\n\nAlso, if possible, let me know what your SIM status shows now (from Settings > About Phone > SIM Status or similar).\n\nReply with those details, and if service is still out, we'll move to checking your network settings or APN next. Hang in there—we'll get this sorted!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_sim_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_status_bar",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "No SIM card detected in the phone.",
+      "tool_call": null,
+      "tool_result": "No SIM card detected in the phone."
+    },
+    {
+      "role": "tool",
+      "content": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_data",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Mobile Data is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Mobile Data is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "I powered my phone back on after reseating the SIM and waited a couple of minutes, but unfortunately, it's still not working. The SIM status in settings shows \"No SIM card detected\" again. In the status bar, I'm seeing no signal bars at all, just \"No Service,\" and mobile data is still disabled. I went into settings and toggled mobile data on, waited 30 seconds, but it didn't change—still disabled and no signal.\n\nThis is getting a bit frustrating; what else can we try?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "transfer_to_human_agents",
+        "arguments": {
+          "summary": "Customer John Smith (phone 555-123-2002, customer ID C1001) reports \"No Service\" issue. Airplane Mode was on and turned off. SIM reseated, but still \"No SIM card detected\" in settings. No signal bars, mobile data disabled even after toggling on. Line L1002 is active, no suspensions. Troubleshooting steps taken: toggle Airplane Mode off, reseat SIM, toggle mobile data on, power cycle. Issue persists, likely hardware/SIM fault requiring replacement or advanced diagnostics."
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Transfer successful",
+      "tool_call": null,
+      "tool_result": "Transfer successful"
+    },
+    {
+      "role": "assistant",
+      "content": "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

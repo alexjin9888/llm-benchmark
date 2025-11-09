@@ -1,0 +1,180 @@
+{
+  "task_id": "[service_issue]break_apn_settings|lock_sim_card_pin[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my phone has been showing \"No Service\" for the past few hours, and I can't make calls or use any data. It's really frustrating.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "I'm sorry to hear you're experiencing \"No Service\" – that can definitely be frustrating. To help troubleshoot this, I first need to verify your account. Could you please provide your phone number, or your full name and date of birth (MM/DD/YYYY)? Once I have that, we can check your line status and run through some quick diagnostic steps on your device.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My name is John Smith, and my phone number is 555-123-2002.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for providing your details, John. I've verified your account (ID: C1001) and confirmed that your line (555-123-2002, ID: L1002) is active with no suspensions or billing issues on our end. This suggests the \"No Service\" problem is likely related to your device's settings or connection. We'll troubleshoot this step by step—it's usually a quick fix.\n\n### Step 1: Check for Airplane Mode\nAirplane Mode disables all cellular connections, which can cause \"No Service.\"\n- On your phone, swipe down from the top of the screen (or go to Settings > Network & Internet > Airplane Mode on Android, or Settings > Airplane Mode on iOS).\n- If it's turned **ON** (you might see an airplane icon in your status bar), turn it **OFF**.\n- After turning it off, wait 30 seconds and check if service returns (look for signal bars in the status bar).\n\nLet me know what you see—does the airplane icon appear, or is it already off? If it's off, we'll move to the next step.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_network_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode: OFF\nSIM Card Status: locked_pin\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+      "tool_call": null,
+      "tool_result": "Airplane Mode: OFF\nSIM Card Status: locked_pin\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No"
+    },
+    {
+      "role": "user",
+      "content": "It's already off—no airplane icon in the status bar. I waited a bit after double-checking, but I'm still showing \"No Service\" with no signal bars at all. What's next?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for confirming that, John. Since Airplane Mode is off and there's no signal at all, the next common cause is an issue with your SIM card—it might not be seated properly or could be temporarily glitched. Let's check and fix that.\n\n### Step 2: Check and Reseat Your SIM Card\nYour SIM card is what connects your phone to our network. If it's not detected correctly, you'll see \"No Service.\"\n\n1. **Power off your phone** first (hold the power button and select \"Power off\").\n2. **Locate your SIM tray**: \n   - On most Android phones (like Samsung or Google Pixel), it's on the side—use the SIM eject tool (a small pin) to pop it out.\n   - On iPhones, it's usually on the right side.\n3. **Remove the SIM card**, inspect it for damage (e.g., scratches or bends), and gently clean the gold contacts with a soft cloth if needed (no liquids).\n4. **Reinsert the SIM card** firmly into the tray, ensuring it clicks into place.\n5. **Power your phone back on** and wait 1-2 minutes for it to connect to the network. Check the status bar for signal bars.\n\nDoes your phone detect the SIM after this (e.g., does it show your phone number or carrier name)? If it's still \"No Service,\" let me know what happens, and we'll check your network settings next. If you see any error like \"SIM locked\" or \"No SIM,\" tell me that too—we might need to address a PIN/PUK issue.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "reseat_sim_card",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "SIM card re-seated successfully.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "SIM card re-seated successfully.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_sim_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "The SIM card is locked with a PIN code.",
+      "tool_call": null,
+      "tool_result": "The SIM card is locked with a PIN code."
+    },
+    {
+      "role": "user",
+      "content": "After reseating the SIM and restarting, the phone is prompting me that the SIM is locked and asking for a PIN code. It doesn't show my carrier or any signal yet. I don't remember setting a PIN—do I need to enter something specific?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "transfer_to_human_agents",
+        "arguments": {
+          "summary": "Customer John Smith (phone: 555-123-2002, line: L1002) reports \"No Service\" issue. Airplane Mode is off. After reseating SIM and restarting, phone prompts SIM is locked and asks for PIN code. User does not remember setting a PIN. Needs assistance with SIM security unlock (PIN/PUK). Account is active, no line issues on our end."
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Transfer successful",
+      "tool_call": null,
+      "tool_result": "Transfer successful"
+    },
+    {
+      "role": "assistant",
+      "content": "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}

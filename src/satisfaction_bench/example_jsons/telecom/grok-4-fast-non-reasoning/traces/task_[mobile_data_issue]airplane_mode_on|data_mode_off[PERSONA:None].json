@@ -1,0 +1,243 @@
+{
+  "task_id": "[mobile_data_issue]airplane_mode_on|data_mode_off[PERSONA:None]",
+  "reward": 1.0,
+  "success": true,
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, my mobile data isn't working right. It keeps cutting out or it's super slow, and I need it fixed so I get really fast internet speeds on my phone. No Wi-Fi here at home.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Hi there! I'm sorry to hear your mobile data is acting up—let's get that sorted out step by step. To help troubleshoot this properly, I need to verify your account first. Could you please provide your phone number, or your full name along with your date of birth (in YYYY-MM-DD format)? Once I have that, we can check your line status and run some diagnostics on your device.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "My name is John Smith, and my phone number is 555-123-2002. I don't want to give out my date of birth if that's not necessary—can we just use the phone number to get started on fixing my data issue?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_customer_by_phone",
+        "arguments": {
+          "phone_number": "555-123-2002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+      "tool_call": null,
+      "tool_result": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1001"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 8.7, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_details_by_id",
+        "arguments": {
+          "id": "P1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}",
+      "tool_call": null,
+      "tool_result": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_call": {
+        "name": "get_data_usage",
+        "arguments": {
+          "customer_id": "C1001",
+          "line_id": "L1002"
+        }
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "{\"line_id\": \"L1002\", \"data_used_gb\": \"8.7\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}",
+      "tool_call": null,
+      "tool_result": "{\"line_id\": \"L1002\", \"data_used_gb\": \"8.7\", \"data_limit_gb\": \"15.0\", \"data_refueling_gb\": \"0.0\", \"cycle_end_date\": \"2025-02-28\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi John, thanks for providing your phone number—I've located your account (customer ID C1001) and confirmed the line associated with 555-123-2002 is active on our Premium Plan (15GB data limit). Your current data usage is 8.7GB so far this cycle (ends Feb 28, 2025), so you haven't hit your limit yet, which is good. No issues like suspension or roaming restrictions seem to be blocking things on our end.\n\nSince you're at home (no Wi-Fi) and want fast mobile data speeds, this sounds like a device or network configuration issue. Let's run some quick diagnostics on your phone to pinpoint what's going on. Can you please perform the following on your device and let me know the results?\n\n1. Run `check_network_status()` to see your signal strength, if mobile data is enabled, and any other basics.\n2. Run `run_speed_test()` to measure your current download speed.\n\nOnce I have those, we can troubleshoot further—like toggling settings, checking for data saver mode, or optimizing your network preferences for faster 4G/5G speeds.",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_network_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: No\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+      "tool_call": null,
+      "tool_result": "Airplane Mode: ON\nSIM Card Status: active\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: No\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed test failed: No Connection.",
+      "tool_call": null,
+      "tool_result": "Speed test failed: No Connection."
+    },
+    {
+      "role": "user",
+      "content": "Okay, I ran those checks you asked for. The network status shows Airplane Mode is on, no cellular service or signal at all, mobile data is disabled, and Wi-Fi is off. The speed test just failed because there's no connection. That explains why my data isn't working—can you walk me through how to fix this?",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "Great, thanks for running those checks, John—that's super helpful. The issue is clear now: Airplane Mode is enabled, which disables all cellular connections (including mobile data and signal), and mobile data is also turned off. This is a common setting mix-up and easy to fix. Let's get you back online step by step.\n\nFirst, turn off Airplane Mode to restore cellular service:\n- Run `toggle_airplane_mode()` on your device. This will turn it OFF (it should confirm the change).\n\nOnce that's done, re-enable mobile data:\n- Run `toggle_data()` to turn mobile data ON.\n\nAfter these steps, run `check_network_status()` again to confirm you now have a signal and mobile data enabled. Then, try `run_speed_test()` to see your download speed—it should connect now.\n\nLet me know the results, and if the speed is still slow (e.g., below \"good\" or \"excellent\"), we'll optimize further, like checking your network mode for 4G/5G or data saver settings. You're almost there!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_airplane_mode",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode is now OFF.\nStatus Bar: 📶⁴ Excellent | 5G | 📵 Data Disabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Airplane Mode is now OFF.\nStatus Bar: 📶⁴ Excellent | 5G | 📵 Data Disabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "toggle_data",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Mobile Data is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+      "tool_call": null,
+      "tool_result": "Mobile Data is now ON.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "check_network_status",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Airplane Mode: OFF\nSIM Card Status: active\nCellular Connection: connected\nCellular Signal: excellent\nCellular Network Type: 5G\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+      "tool_call": null,
+      "tool_result": "Airplane Mode: OFF\nSIM Card Status: active\nCellular Connection: connected\nCellular Signal: excellent\nCellular Network Type: 5G\nMobile Data Enabled: Yes\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No"
+    },
+    {
+      "role": "user",
+      "content": "",
+      "tool_call": {
+        "name": "run_speed_test",
+        "arguments": null
+      },
+      "tool_result": null
+    },
+    {
+      "role": "tool",
+      "content": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast.",
+      "tool_call": null,
+      "tool_result": "Speed Test Result: 275.00 Mbps (Excellent). Connection is very fast."
+    },
+    {
+      "role": "user",
+      "content": "Great, I followed your steps: toggled off Airplane Mode, turned on mobile data, and checked the network status again. Now it's showing excellent signal on 5G, mobile data enabled, and the speed test came back at 275 Mbps, which is excellent. That seems to have fixed it—my data's working perfectly now. Thanks for the help!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "assistant",
+      "content": "You're welcome, John! I'm glad those steps did the trick and you're back to blazing-fast 5G speeds. If anything else comes up with your service, data, or account, just let me know—happy to help anytime. Have a great day!",
+      "tool_call": null,
+      "tool_result": null
+    },
+    {
+      "role": "user",
+      "content": "Thanks! You too. ###STOP###",
+      "tool_call": null,
+      "tool_result": null
+    }
+  ]
+}
